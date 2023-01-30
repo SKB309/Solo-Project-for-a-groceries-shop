@@ -3,7 +3,13 @@ package agroceriesShop;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
@@ -13,8 +19,228 @@ public class Maine {
 	static String name;
 
 	Shop shop;
+	
+	static void connectToDataBase() throws Throwable, IllegalAccessException, ClassNotFoundException {
 
-static void applicationMainMenu() {
+		Connection connection;
+
+		try {
+
+			// Create a connection to the database
+
+			String serverName = "localhost";
+
+			String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
+			String user = "sa";
+			String pass = "root";
+			Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+			DriverManager.registerDriver(driver);
+
+			connection = DriverManager.getConnection(url, user, pass);
+
+			System.out.println("Successfully Connected to the database!" + " SoloProjectBatch1 ");
+
+		} catch (SQLException e) {
+
+			System.out.println("Could not connect to the database " + e.getMessage());
+		}
+
+	}
+
+	 static void createItemsTable() throws Throwable{
+		Connection conn;
+		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
+		String user = "sa";
+		String pass = "root";
+
+		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
+				Statement stmt = conn1.createStatement();) {
+			String sql = "CREATE TABLE GroceryItems "
+				    + "( Id int PRIMARY KEY IDENTITY(1,1)," 
+					+ " Item_Name VARCHAR(1000),"
+					+ " Quantity INTEGER," 
+					+ " Unit_Price float," 
+					+ " Qty_Amount INTEGER ,)" ;
+			
+			
+			stmt.executeUpdate(sql);
+			System.out.println("Created table in given database...");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	 static void createInvoiceTable() throws Throwable {
+		Connection conn;
+		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
+		String user = "sa";
+		String pass = "root";
+
+		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
+				Statement stmt = conn1.createStatement();) {
+			String sql = "CREATE TABLE Invoice "
+				    + "( Id int PRIMARY KEY IDENTITY(1,1)," 
+					+ " Name VARCHAR(1000),"
+					+ " Phone_Number INTEGER ," 
+					+ " Invoice_Date VARCHAR(1000) ," 
+					+ " Number_Of_Items INTEGER ,"
+			        + " Total_Amount INTEGER,"
+			        + " Paid_Amount INTEGER ," 
+			        + " Balance INTEGER ," 
+			        + " Total float,)";
+							  
+			stmt.executeUpdate(sql);
+			System.out.println("Created table in given database...");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	static void insertInItemsTable() {
+		
+		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
+		String user = "sa";
+		String pass = "root";
+
+		Scanner scanner = new Scanner(System.in);
+		
+		
+		System.out.println("Enter Item Name");
+		String Item_Name = scanner.next();
+
+		System.out.println("Enter Quantity");
+		Integer Quantity = scanner.nextInt();
+
+		System.out.println("Enter Unit Price");
+		float Unit_Price = scanner.nextInt();
+
+//		System.out.println("Enter Qty Amount");
+//		float Qty_Amount = scanner.nextInt();
+
+		
+
+		String sql = "Insert into GroceryItems values( '" 
+		        + Item_Name + "'," 
+		        + Quantity + "," 
+				+ Unit_Price + ","
+				+ Quantity*Unit_Price + ")";
+
+		// Connection class object
+		Connection con;
+
+		// Try block to check for exceptions
+		try {
+
+			Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
+
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
+
+			// Creating a statement
+			Statement st = con.createStatement();
+
+			// Executing query
+			int m = st.executeUpdate(sql);
+			if (m >= 1)
+				System.out.println("inserted successfully : " + sql);
+			else
+				System.out.println("insertion failed");
+
+			// Closing the connections
+			con.close();
+		}
+
+		// Catch block to handle exceptions
+		catch (Exception ex) {
+			// Display message when exceptions occurs
+			System.err.println(ex);
+		}
+
+	}
+
+	static void insertInInvoiceTable() {
+		
+		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
+		String user = "sa";
+		String pass = "root";
+
+		Scanner scanner = new Scanner(System.in);
+		
+		
+		System.out.println("Enter Invoice Name");
+		String Name = scanner.next();
+
+		System.out.println("Enter Phone Number");
+		Integer Phone_Number = scanner.nextInt();
+
+		System.out.println("Enter Invoice Date");
+		String Invoice_Date = scanner.next();
+
+		System.out.println("Enter Number Of Items");
+		Integer Number_Of_Items = scanner.nextInt();
+		
+		System.out.println("Enter Total Amount");
+		Integer Total_Amount = scanner.nextInt();
+
+		System.out.println("Enter Paid Amount");
+		Integer Paid_Amount = scanner.nextInt();
+
+		System.out.println("Enter Balance");
+		Integer Balance = scanner.nextInt();
+
+		System.out.println("Enter Total");
+		Integer Total = scanner.nextInt();
+
+		
+
+		String sql = "Insert into Invoice values( '" 
+		        + Name + "'," 
+		        + Phone_Number + ",'" 
+				+ Invoice_Date + "',"
+				+ Number_Of_Items + ","
+		        + Total_Amount + "," 
+                + Paid_Amount + "," 
+		        + Balance + ","
+		        + Total + ")";
+
+		// Connection class object
+		Connection con;
+
+		// Try block to check for exceptions
+		try {
+
+			Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
+
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
+
+			// Creating a statement
+			Statement st = con.createStatement();
+
+			// Executing query
+			int m = st.executeUpdate(sql);
+			if (m >= 1)
+				System.out.println("inserted successfully : " + sql);
+			else
+				System.out.println("insertion failed");
+
+			// Closing the connections
+			con.close();
+		}
+
+		// Catch block to handle exceptions
+		catch (Exception ex) {
+			// Display message when exceptions occurs
+			System.err.println(ex);
+		}
+
+	}
+	
+    static void applicationMainMenu() {
 
 		System.out.println("* * * * * * *  Hello  * * * * * * * * * *");
 		System.out.println("1-Shop Settings");
@@ -47,10 +273,8 @@ static void applicationMainMenu() {
 			switch (option2) {
 
 			case 1:
-
-				System.out.println("Load Data : ");
-				option2 = sc.nextInt();
-
+				loadData();
+//				
 				break;
 
 			case 2:
@@ -76,8 +300,6 @@ static void applicationMainMenu() {
 
 			case 0:
 
-				System.out.println(" Exit ");
-				option2 = sc.nextInt();
 				exit2 = false;
 
 				break;
@@ -144,8 +366,6 @@ static void applicationMainMenu() {
 
 			case 0:
 
-				System.out.println(" Exit ");
-				option3 = sc.nextInt();
 				exit3 = false;
 
 				break;
@@ -175,7 +395,7 @@ static void applicationMainMenu() {
 				break;
 			}
 			System.out.print("Enter item price: ");
-			double price = Double.parseDouble(sc.nextLine());
+			float price = (float) Double.parseDouble(sc.nextLine());
 
 			System.out.print("Enter item quantity: ");
 			Integer quantity = Integer.parseInt(sc.nextLine());
@@ -220,6 +440,13 @@ static void applicationMainMenu() {
 		sho.saveData();
 	}
 
+	static void loadData() {
+		 
+		insertInItemsTable();
+		insertInInvoiceTable();
+		
+	}
+	
 	static void exitAction() {
 
 		System.out.println("* * * * * * *  Exit  * * * * * * * * * *");
@@ -244,47 +471,46 @@ static void applicationMainMenu() {
 
 		Scanner sc = new Scanner(System.in);
 
-		boolean exit1 = true;
-//		boolean exit2 = true;
-//		boolean exit3 = true;
+		boolean exit1 = true;	
 
-		int option1;
-//		int option2;
-//		int option3;
+		int option1;	
 
 		welcomeMassege();
 		sc.nextLine();
+	
+		
 
 		do {
 
 			applicationMainMenu();
 			option1 = sc.nextInt();
+			
 
 			switch (option1) {
 
 			case 1:
 
 				shopSettingsMenu();
-//				option2 = sc.nextInt();
 
 				break;
 
 			case 2:
 
-				manageShopItems();
-//				option3 = sc.nextInt();
 
 				break;
 
 			case 3:
+				connectToDataBase();
 
 				break;
 
 			case 4:
+				createItemsTable();
 
 				break;
 
 			case 5:
+				createInvoiceTable();
 
 				break;
 
@@ -301,7 +527,7 @@ static void applicationMainMenu() {
 				break;
 
 			case 0:
-//				System.exit(0);
+				
 				exitAction();
 				exit1 = false;
 				break;

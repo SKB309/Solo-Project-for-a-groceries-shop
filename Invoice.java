@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Invoice {
-
 	private String name;
 	private Integer phoneNumber;
-	private Date invoiceDate;
+	private String invoiceDate;
 	private Integer numberOfItems;
 	private Integer totalAmount;
 	private Integer paidAmount;
@@ -54,11 +53,11 @@ public class Invoice {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Date getInvoiceDate() {
+	public String getInvoiceDate() {
 		return invoiceDate;
 	}
 
-	public void setInvoiceDate(Date invoiceDate) {
+	public void setInvoiceDate(String invoiceDate) {
 		this.invoiceDate = invoiceDate;
 	}
 
@@ -92,6 +91,16 @@ public class Invoice {
 
 	public void setBalance(Integer balance) {
 		this.balance = balance;
+	}
+
+	public void add(Invoice invoice1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addProduct(Object object) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

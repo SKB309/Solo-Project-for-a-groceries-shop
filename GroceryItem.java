@@ -5,10 +5,10 @@ public class GroceryItem {
 	private String itemName;
 	private Integer quantity;
 	private Integer itemId;
-	private double unitPrice;
-	private Integer qtyAmount;
+	private float unitPrice;
+	private float qtyAmount;
 
-	public GroceryItem(String itemName, double unitPrice, int quantity) {
+	public GroceryItem(String itemName, float unitPrice, int quantity) {
 		this.itemName = itemName;
 		this.unitPrice = unitPrice;
 		this.quantity = quantity;
@@ -34,7 +34,7 @@ public class GroceryItem {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(double unitPrice) {
+	public void setUnitPrice(float unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 
@@ -46,7 +46,7 @@ public class GroceryItem {
 		this.quantity = quantity;
 	}
 
-	public Integer getQtyAmount() {
+	public float getQtyAmount() {
 		return qtyAmount;
 	}
 
