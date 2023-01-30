@@ -16,8 +16,8 @@ public class Maine {
 	static String name;
 
 	Shop shop;
-	
-	static void connectToDataBase() throws Throwable{
+
+	static void connectToDataBase() throws Throwable {
 
 		Connection connection;
 
@@ -43,8 +43,9 @@ public class Maine {
 		}
 
 	}
+	
 
-	static void createItemsTable() throws Throwable{
+	static void createItemsTable() throws Throwable {
 		Connection conn;
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
 		String user = "sa";
@@ -52,21 +53,17 @@ public class Maine {
 
 		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
 				Statement stmt = conn1.createStatement();) {
-			String sql = "CREATE TABLE GroceryItems "
-				    + "( Id int PRIMARY KEY IDENTITY(1,1)," 
-					+ " Item_Name VARCHAR(1000),"
-					+ " Quantity INTEGER," 
-					+ " Unit_Price float," 
-					+ " Qty_Amount INTEGER ,)" ;
-			
-			
+			String sql = "CREATE TABLE GroceryItems " + "( Id int PRIMARY KEY IDENTITY(1,1),"
+					+ " Item_Name VARCHAR(1000)," + " Quantity INTEGER," + " Unit_Price float,"
+					+ " Qty_Amount INTEGER ,)";
+
 			stmt.executeUpdate(sql);
 			System.out.println("Created table in given database...");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	static void createInvoiceTable() throws Throwable {
 		Connection conn;
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
@@ -75,54 +72,44 @@ public class Maine {
 
 		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
 				Statement stmt = conn1.createStatement();) {
-			String sql = "CREATE TABLE Invoice "
-				    + "( Id int PRIMARY KEY IDENTITY(1,1)," 
-					+ " Name VARCHAR(1000),"
-					+ " Phone_Number INTEGER ," 
-					+ " Invoice_Date VARCHAR(1000) ," 
-					+ " Number_Of_Items INTEGER ,"
-			        + " Total_Amount INTEGER,"
-			        + " Paid_Amount INTEGER ," 
-			        + " Balance INTEGER ," 
-			        + " Total float,)";
-							  
+			String sql = "CREATE TABLE Invoice " + "( Id int PRIMARY KEY IDENTITY(1,1)," + " Name VARCHAR(1000),"
+					+ " Phone_Number INTEGER ," + " Invoice_Date VARCHAR(1000) ," + " Number_Of_Items INTEGER ,"
+					+ " Total_Amount INTEGER," + " Paid_Amount INTEGER ," + " Balance INTEGER ," + " Total float,)";
+
 			stmt.executeUpdate(sql);
 			System.out.println("Created table in given database...");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	static void createShopNameTable() {
-		 
-		 Connection conn;
-			String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-			String user = "sa";
-			String pass = "root";
 
-			try (Connection conn1 = DriverManager.getConnection(url, user, pass);
-					Statement stmt = conn1.createStatement();) {
-				String sql = "CREATE TABLE Shop_Name "
-					    + "( Id int PRIMARY KEY IDENTITY(1,1)," 
-						+ " Name_Of_Shop VARCHAR(1000),)";
-				      
-								  
-				stmt.executeUpdate(sql);
-				System.out.println("Created table in given database...");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	static void createShopNameTable() {
+
+		Connection conn;
+		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
+		String user = "sa";
+		String pass = "root";
+
+		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
+				Statement stmt = conn1.createStatement();) {
+			String sql = "CREATE TABLE Shop_Name " + "( Id int PRIMARY KEY IDENTITY(1,1),"
+					+ " Name_Of_Shop VARCHAR(1000),)";
+
+			stmt.executeUpdate(sql);
+			System.out.println("Created table in given database...");
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-	 
+	}
+
 	static void insertInItemsTable() {
-		
+
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
 		String user = "sa";
 		String pass = "root";
 
 		Scanner scanner = new Scanner(System.in);
-		
-		
+
 		System.out.println("Enter Item Name");
 		String Item_Name = scanner.next();
 
@@ -135,13 +122,8 @@ public class Maine {
 //		System.out.println("Enter Qty Amount");
 //		float Qty_Amount = scanner.nextInt();
 
-		
-
-		String sql = "Insert into GroceryItems values( '" 
-		        + Item_Name + "'," 
-		        + Quantity + "," 
-				+ Unit_Price + ","
-				+ Quantity*Unit_Price + ")";
+		String sql = "Insert into GroceryItems values( '" + Item_Name + "'," + Quantity + "," + Unit_Price + ","
+				+ Quantity * Unit_Price + ")";
 
 		// Connection class object
 		Connection con;
@@ -177,16 +159,16 @@ public class Maine {
 		}
 
 	}
+	
 
 	static void insertInInvoiceTable() {
-		
+
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
 		String user = "sa";
 		String pass = "root";
 
 		Scanner scanner = new Scanner(System.in);
-		
-		
+
 		System.out.println("Enter Invoice Name");
 		String Name = scanner.next();
 
@@ -198,7 +180,7 @@ public class Maine {
 
 		System.out.println("Enter Number Of Items");
 		Integer Number_Of_Items = scanner.nextInt();
-		
+
 		System.out.println("Enter Total Amount");
 		Integer Total_Amount = scanner.nextInt();
 
@@ -211,17 +193,8 @@ public class Maine {
 		System.out.println("Enter Total");
 		Integer Total = scanner.nextInt();
 
-		
-
-		String sql = "Insert into Invoice values( '" 
-		        + Name + "'," 
-		        + Phone_Number + ",'" 
-				+ Invoice_Date + "',"
-				+ Number_Of_Items + ","
-		        + Total_Amount + "," 
-                + Paid_Amount + "," 
-		        + Balance + ","
-		        + Total + ")";
+		String sql = "Insert into Invoice values( '" + Name + "'," + Phone_Number + ",'" + Invoice_Date + "',"
+				+ Number_Of_Items + "," + Total_Amount + "," + Paid_Amount + "," + Balance + "," + Total + ")";
 
 		// Connection class object
 		Connection con;
@@ -257,23 +230,19 @@ public class Maine {
 		}
 
 	}
-	
-	static void setShopName(){
-		
+
+	static void setShopName() {
+
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
 		String user = "sa";
 		String pass = "root";
 
 		Scanner scanner = new Scanner(System.in);
-		
-		
+
 		System.out.println("Enter Shop Name");
 		String Name_Of_Shop = scanner.next();
 
-		
-		String sql = "Insert into Shop_Name values( '" 
-		        + Name_Of_Shop + "')";
-		        
+		String sql = "Insert into Shop_Name values( '" + Name_Of_Shop + "')";
 
 		// Connection class object
 		Connection con;
@@ -309,8 +278,8 @@ public class Maine {
 		}
 
 	}
-	
-    static void applicationMainMenu() {
+
+	static void applicationMainMenu() {
 
 		System.out.println("* * * * * * *  Hello  * * * * * * * * * *");
 		System.out.println("1-Shop Settings");
@@ -323,6 +292,7 @@ public class Maine {
 		System.out.println("7-Program Statistics (Print each Main Menu Item with how many number selected)");
 		System.out.println("0-Exit ");
 	}
+	
 
 	static void shopSettingsMenu() {
 
@@ -343,7 +313,7 @@ public class Maine {
 			switch (option2) {
 
 			case 1:
-				
+
 				loadData();
 //				
 				break;
@@ -410,13 +380,12 @@ public class Maine {
 			case 2:
 
 				deleteItem();
-				
+
 				break;
 
 			case 3:
 
-				System.out.println(" Change Item Price :");
-				option3 = sc.nextInt();
+				changeItemPrice();
 
 				break;
 
@@ -442,9 +411,8 @@ public class Maine {
 		} while (exit3);
 	}
 
-	
 	static void addItems() {
-		
+
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
 		String user = "sa";
 		String pass = "root";
@@ -460,16 +428,12 @@ public class Maine {
 
 			System.out.print("Enter item quantity: ");
 			Integer Quantity = Integer.parseInt(sc.nextLine());
-			
+
 			System.out.print("Enter item price: ");
 			float Unit_Price = (float) Double.parseDouble(sc.nextLine());
-			
-			
-			String sql = "Insert into GroceryItems values( '" 
-			        + Item_Name + "'," 
-			        + Quantity + "," 
-					+ Unit_Price + ","
-					+ Quantity*Unit_Price + ")";
+
+			String sql = "Insert into GroceryItems values( '" + Item_Name + "'," + Quantity + "," + Unit_Price + ","
+					+ Quantity * Unit_Price + ")";
 
 			// Connection class object
 			Connection con;
@@ -505,45 +469,69 @@ public class Maine {
 			}
 
 		}
-		
+
 	}
 
-	
-	public static void deleteItem() throws Throwable{
-		
+	static void deleteItem() throws Throwable {
+
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
 		String user = "sa";
 		String pass = "root";
 		Connection con;
-		
+
 		// Reference to connection interface
 		con = DriverManager.getConnection(url, user, pass);
 
 		// Creating a statement
 		Statement st = con.createStatement();
-		
-		
 
 		Scanner sc = new Scanner(System.in);
-		
 
-		
 		System.out.println(" Please Enter The Item Name To Delete The Row");
 		String userInput = sc.next();
-		String sqlQueryToDelete = "DELETE FROM GroceryItems WHERE Item_Name = '" + userInput +"'";
+		String sqlQueryToDelete = "DELETE FROM GroceryItems WHERE Item_Name = '" + userInput + "'";
 		try {
 			Statement statement = con.createStatement();
 			int resultSet = statement.executeUpdate(sqlQueryToDelete);
-				
-				
-				System.out.println("The Item Name "+userInput +" Has Been Deleted ");
-				
-			
+
+			System.out.println("The Item Name " + userInput + " Has Been Deleted ");
+
 		} catch (Exception ex) {
 			System.err.println(ex);
 		}
 	}
-	
+
+	static void changeItemPrice() throws Throwable {
+		
+		
+//		TO BE Complete
+
+		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
+		String user = "sa";
+		String pass = "root";
+		Connection con;
+
+		// Reference to connection interface
+		con = DriverManager.getConnection(url, user, pass);
+
+		// Creating a statement
+		Statement st = con.createStatement();
+
+		System.out.println(" Please Enter Item Name To Update Unit Price");
+		Scanner inputScanner = new Scanner(System.in);
+		float userInput = inputScanner.nextInt();
+
+		String sqlQueryToUpdate = "UPDATE GroceryItems SET Unit_Price =('" + userInput + "')";
+		System.out.println(sqlQueryToUpdate);
+		try {
+			Statement statement = con.createStatement();
+			int m = statement.executeUpdate(sqlQueryToUpdate);
+
+		} catch (Exception ex) {
+			System.err.println(ex);
+		}
+	}
+		
 	
 	static void loadData() {
 		 
