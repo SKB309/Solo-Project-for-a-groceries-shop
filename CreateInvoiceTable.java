@@ -15,7 +15,7 @@ public class CreateInvoiceTable {
 
 		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
 				Statement stmt = conn1.createStatement();) {
-			String sql = "CREATE TABLE Invoice " + "( Id int PRIMARY KEY IDENTITY(1,1)," + " Name VARCHAR(1000),"
+			String sql = "CREATE TABLE Invoice " + "( Id int PRIMARY KEY IDENTITY(1,1)," + " Customer_Name VARCHAR(1000),"
 					+ " Phone_Number INTEGER ," + " Invoice_Date VARCHAR(1000) ," + " Number_Of_Items INTEGER ,"
 					+ " Total_Amount INTEGER," + " Paid_Amount INTEGER ," + " Balance INTEGER ," + " Total float,)";
 

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Invoice {
-	private String name;
+	
+	
+	private String customerName;
 	private Integer phoneNumber;
 	private String invoiceDate;
 	private Integer numberOfItems;
@@ -12,8 +14,9 @@ public class Invoice {
 	private Integer paidAmount;
 	private Integer balance;
 	private double total;
+	private GroceryItem[] groceryItem;
+	
 	ArrayList<GroceryItem> items;
-	GroceryItem groceryItem;
 
 	public Invoice() {
 		items = new ArrayList<GroceryItem>();
@@ -34,13 +37,7 @@ public class Invoice {
 		System.out.println("  Total: " + total + " O.R");
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 	public Integer getPhoneNumber() {
 		return phoneNumber;
@@ -99,5 +96,28 @@ public class Invoice {
 		// TODO Auto-generated method stub
 
 	}
+
+	public Object getInvoiceNumber() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public GroceryItem[] getGroceryItem() {
+		return groceryItem;
+	}
+
+	public void setGroceryItem(GroceryItem[] groceryItem) {
+		this.groceryItem = groceryItem;
+	}
+
+	
 
 }

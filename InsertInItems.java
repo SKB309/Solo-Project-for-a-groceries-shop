@@ -23,7 +23,7 @@ public class InsertInItems {
 		Integer Quantity = scanner.nextInt();
 
 		System.out.println("Enter Unit Price");
-		float Unit_Price = scanner.nextInt();
+		float Unit_Price = scanner.nextFloat();
 
 //		System.out.println("Enter Qty Amount");
 //		float Qty_Amount = scanner.nextInt();

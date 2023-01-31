@@ -1,5 +1,7 @@
 package agroceriesShop;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -16,8 +18,8 @@ public class InsertInInvoice {
 
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Enter Invoice Name");
-		String Name = scanner.next();
+		System.out.println("Enter Customer Name");
+		String Customer_Name = scanner.next();
 
 		System.out.println("Enter Phone Number");
 		Integer Phone_Number = scanner.nextInt();
@@ -40,7 +42,7 @@ public class InsertInInvoice {
 		System.out.println("Enter Total");
 		Integer Total = scanner.nextInt();
 
-		String sql = "Insert into Invoice values( '" + Name + "'," + Phone_Number + ",'" + Invoice_Date + "',"
+		String sql = "Insert into Invoice values( '" + Customer_Name + "'," + Phone_Number + ",'" + Invoice_Date + "',"
 				+ Number_Of_Items + "," + Total_Amount + "," + Paid_Amount + "," + Balance + "," + Total + ")";
 
 		// Connection class object
@@ -75,5 +77,13 @@ public class InsertInInvoice {
 			// Display message when exceptions occurs
 			System.err.println(ex);
 		}
+		System.out.println("!!!!!!!!!!!!!!Serialized Done Successfully!!!!!!!!!!!!!!");
+		try (FileOutputStream fileOut = new FileOutputStream("CustomerName.ser");
+		         ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+		      out.writeObject(Customer_Name);
+		     
+		    } catch (Exception e) {
+		      e.printStackTrace();
+		    }
 	}
 }

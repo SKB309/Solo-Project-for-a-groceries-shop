@@ -1,5 +1,7 @@
 package agroceriesShop;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -7,9 +9,12 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class AddItemsInTable {
+	
 
 	public static void addItemsIntoTable() {
 
+		
+		
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
 		String user = "sa";
 		String pass = "root";
@@ -32,6 +37,7 @@ public class AddItemsInTable {
 			String sql = "Insert into GroceryItems values( '" + Item_Name + "'," + Quantity + "," + Unit_Price + ","
 					+ Quantity * Unit_Price + ")";
 
+			 
 			// Connection class object
 			Connection con;
 
@@ -64,6 +70,15 @@ public class AddItemsInTable {
 				// Display message when exceptions occurs
 				System.err.println(ex);
 			}
+			System.out.println("!!!!!!!!!!!!!!Serialized Done Successfully!!!!!!!!!!!!!!");
+			try (FileOutputStream fileOut = new FileOutputStream("item.ser");
+			         ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+			      out.writeObject(Item_Name);
+			     
+			    } catch (Exception e) {
+			      e.printStackTrace();
+			    }
+			 
 
 		}
 

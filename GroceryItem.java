@@ -1,20 +1,34 @@
 package agroceriesShop;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 public class GroceryItem {
 
-	private String itemName;
+	
+	private static String itemName;
 	private Integer quantity;
 	private Integer itemId;
 	private float unitPrice;
 	private float qtyAmount;
+	Invoice[] invoice;
 
-	public GroceryItem(String itemName, float unitPrice, int quantity) {
-		this.itemName = itemName;
-		this.unitPrice = unitPrice;
-		this.quantity = quantity;
+	
+	 
+ public Invoice[] getInvoice() {
+		return invoice;
 	}
 
-	public String getItemName() {
+	public void setInvoice(Invoice[] invoice) {
+		this.invoice = invoice;
+	}
+
+	public void setQtyAmount(float qtyAmount) {
+		this.qtyAmount = qtyAmount;
+	}
+
+public String getItemName() {
 		return itemName;
 	}
 
@@ -52,6 +66,16 @@ public class GroceryItem {
 
 	public void setQtyAmount(Integer qtyAmount) {
 		this.qtyAmount = qtyAmount;
+	}
+
+	public Object getInvoiceNumber() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getCustomerName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
