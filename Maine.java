@@ -3,19 +3,12 @@ package agroceriesShop;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class Maine {
-
-	static String name;
-
-	Shop shop;
 
 	static void connectToDataBase() throws Throwable {
 
@@ -293,7 +286,6 @@ public class Maine {
 		System.out.println("0-Exit ");
 	}
 	
-
 	static void shopSettingsMenu() {
 
 		Scanner sc = new Scanner(System.in);
@@ -531,8 +523,7 @@ public class Maine {
 			System.err.println(ex);
 		}
 	}
-		
-	
+			
 	static void loadData() {
 		 
 		insertInItemsTable();
@@ -560,25 +551,60 @@ public class Maine {
 		System.out.println("Please Press Enter key to continue...");
 	}
 
+	static void userNameAndPass() {
+		
+		boolean isUser = true;
+
+		Scanner sc = new Scanner(System.in);
+		Stack<String> historyStack = new Stack<>();
+
+		while (isUser) {
+			System.out.println("Entere user name");
+			String userName = sc.next();
+			historyStack.push(userName);
+
+			try {
+				if (!userName.equals("SAID")) {
+					throw new Exception("user name is wrong");
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				continue;
+			}
+
+			System.out.println("Entere user Password");
+			String userPass = sc.next();
+			historyStack.push(userPass);
+
+			try {
+				if (!userPass.equals("said")) {
+					throw new Exception("user Password is wrong");
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				continue;
+			}
+		}
+		isUser = false;
+	}
+
 	public static void main(String[] args) throws Throwable {
 
 		Scanner sc = new Scanner(System.in);
 
-		boolean exit1 = true;	
+		boolean exit1 = true;
 
-		int option1;	
+		int option1;
 
 		welcomeMassege();
 		sc.nextLine();
+		userNameAndPass();
 		connectToDataBase();
 
 		do {
 
 			applicationMainMenu();
 			option1 = sc.nextInt();
-			
-
-			
 
 			switch (option1) {
 
@@ -589,7 +615,7 @@ public class Maine {
 				break;
 
 			case 2:
-				
+
 				manageShopItems();
 
 				break;
@@ -607,7 +633,6 @@ public class Maine {
 				break;
 
 			case 6:
-				
 
 				break;
 
@@ -620,7 +645,7 @@ public class Maine {
 				break;
 
 			case 0:
-				
+
 				exitAction();
 				exit1 = false;
 				break;
@@ -632,7 +657,7 @@ public class Maine {
 			}
 		} while (exit1);
 
-		;
-
 	}
+
 }
+
