@@ -37,7 +37,6 @@ public class Maine {
 
 	}
 	
-
 	static void createItemsTable() throws Throwable {
 		Connection conn;
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
@@ -153,7 +152,6 @@ public class Maine {
 
 	}
 	
-
 	static void insertInInvoiceTable() {
 
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
@@ -283,6 +281,7 @@ public class Maine {
 				"5-Report: All Invoices ( Invoice No, Invoice Date, Customer Name, No of items, Total, Balance)");
 		System.out.println("6-Search (1) Invoice (Search by Invoice No and Report All Invoice details with items");
 		System.out.println("7-Program Statistics (Print each Main Menu Item with how many number selected)");
+		System.out.println("8-Create Tables");
 		System.out.println("0-Exit ");
 	}
 	
@@ -402,7 +401,54 @@ public class Maine {
 
 		} while (exit3);
 	}
+    
+	static void createTables() throws Throwable {
+		Scanner sc = new Scanner(System.in);
+		int option4;
+		boolean exit4 = true;
+		do {
 
+			System.out.println(" 1- Create Items Table  ");
+			System.out.println(" 2- Create Invoice Table ");
+			System.out.println(" 3- Create Shop Name Table ");
+			System.out.println(" 0- Exit ");
+
+			option4 = sc.nextInt();
+
+			switch (option4) {
+
+			case 1:
+
+				createItemsTable();
+
+				break;
+
+			case 2:
+
+				createInvoiceTable();
+
+				break;
+
+			case 3:
+
+				createShopNameTable();
+
+				break;
+
+			case 0:
+
+				exit4 = false;
+				break;
+
+			default:
+
+				defaultAction();
+
+			}
+		} while (exit4);
+
+	}
+	
 	static void addItems() {
 
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
@@ -533,6 +579,19 @@ public class Maine {
 	
 	static void exitAction() {
 
+		Scanner sc = new Scanner(System.in);
+		
+		
+		boolean isExitSystem = true;
+		String yes = null;
+
+		System.out.println("Are you sure you want to exit? yes, program ends,if No , main menu reprinted again");
+		String exitSystem = sc.next();
+		if (exitSystem == yes) {
+			isExitSystem = false;
+
+		}
+	
 		System.out.println("* * * * * * *  Exit  * * * * * * * * * *");
 		System.out.println("* * * * * *  THANK YOU  * * * * * * * *");
 		System.out.println("**********SEE YOU SOON *************");
@@ -551,7 +610,7 @@ public class Maine {
 		System.out.println("Please Press Enter key to continue...");
 	}
 
-	static void userNameAndPass() {
+	static void userNameAndPass()throws Throwable {
 		
 		boolean isUser = true;
 
@@ -598,8 +657,9 @@ public class Maine {
 
 		welcomeMassege();
 		sc.nextLine();
-		userNameAndPass();
 		connectToDataBase();
+//		userNameAndPass();
+		
 
 		do {
 
@@ -641,7 +701,7 @@ public class Maine {
 				break;
 
 			case 8:
-
+				createTables();
 				break;
 
 			case 0:
