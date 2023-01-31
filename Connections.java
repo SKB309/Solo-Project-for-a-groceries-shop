@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Connections {
-	
-	
+
 	public static void connectToDataBase() throws Throwable {
 
 		Connection connection;

@@ -7,66 +7,66 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class AddItemsInTable {
-	
+
 	public static void addItemsIntoTable() {
-	
-	String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-	String user = "sa";
-	String pass = "root";
 
-	Scanner sc = new Scanner(System.in);
+		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
+		String user = "sa";
+		String pass = "root";
 
-	while (true) {
-		System.out.print("Enter item name (or 'done' to finish): ");
-		String Item_Name = sc.nextLine();
-		if (Item_Name.equalsIgnoreCase("done")) {
-			break;
-		}
+		Scanner sc = new Scanner(System.in);
 
-		System.out.print("Enter item quantity: ");
-		Integer Quantity = Integer.parseInt(sc.nextLine());
+		while (true) {
+			System.out.print("Enter item name (or 'done' to finish): ");
+			String Item_Name = sc.nextLine();
+			if (Item_Name.equalsIgnoreCase("done")) {
+				break;
+			}
 
-		System.out.print("Enter item price: ");
-		float Unit_Price = (float) Double.parseDouble(sc.nextLine());
+			System.out.print("Enter item quantity: ");
+			Integer Quantity = Integer.parseInt(sc.nextLine());
 
-		String sql = "Insert into GroceryItems values( '" + Item_Name + "'," + Quantity + "," + Unit_Price + ","
-				+ Quantity * Unit_Price + ")";
+			System.out.print("Enter item price: ");
+			float Unit_Price = (float) Double.parseDouble(sc.nextLine());
 
-		// Connection class object
-		Connection con;
+			String sql = "Insert into GroceryItems values( '" + Item_Name + "'," + Quantity + "," + Unit_Price + ","
+					+ Quantity * Unit_Price + ")";
 
-		// Try block to check for exceptions
-		try {
+			// Connection class object
+			Connection con;
 
-			Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-			// Registering drivers
-			DriverManager.registerDriver(driver);
+			// Try block to check for exceptions
+			try {
 
-			// Reference to connection interface
-			con = DriverManager.getConnection(url, user, pass);
+				Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+				// Registering drivers
+				DriverManager.registerDriver(driver);
 
-			// Creating a statement
-			Statement st = con.createStatement();
+				// Reference to connection interface
+				con = DriverManager.getConnection(url, user, pass);
 
-			// Executing query
-			int m = st.executeUpdate(sql);
-			if (m >= 1)
-				System.out.println("inserted successfully : " + sql);
-			else
-				System.out.println("insertion failed");
+				// Creating a statement
+				Statement st = con.createStatement();
 
-			// Closing the connections
-			con.close();
-		}
+				// Executing query
+				int m = st.executeUpdate(sql);
+				if (m >= 1)
+					System.out.println("inserted successfully : " + sql);
+				else
+					System.out.println("insertion failed");
 
-		// Catch block to handle exceptions
-		catch (Exception ex) {
-			// Display message when exceptions occurs
-			System.err.println(ex);
+				// Closing the connections
+				con.close();
+			}
+
+			// Catch block to handle exceptions
+			catch (Exception ex) {
+				// Display message when exceptions occurs
+				System.err.println(ex);
+			}
+
 		}
 
 	}
-
-}
 
 }

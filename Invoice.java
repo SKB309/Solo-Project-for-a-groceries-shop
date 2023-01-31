@@ -34,9 +34,6 @@ public class Invoice {
 		System.out.println("  Total: " + total + " O.R");
 	}
 
-	
-	
-	
 	public String getName() {
 		return name;
 	}
@@ -95,12 +92,12 @@ public class Invoice {
 
 	public void add(Invoice invoice1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void addProduct(Object object) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

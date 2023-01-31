@@ -10,14 +10,12 @@ import java.util.Set;
 public class Shop {
 
 	String name;
-	
+
 	private static ObjectOutputStream out;
 	ObjectInputStream in = null;
 	FileOutputStream fops;
 
 	private Set<String> shopName;
-
-	
 
 	public Set<String> getShopName() {
 		return shopName;
@@ -45,5 +43,3 @@ public class Shop {
 	}
 
 }
-
-

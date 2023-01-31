@@ -11,66 +11,59 @@ import java.util.Stack;
 public class Maine {
 
 	static void connectToDataBase() throws Throwable {
-		
-		Connections connect = new Connections();
+
 		Connections.connectToDataBase();
 
-	}	
+	}
+
 	static void createItemsTable() throws Throwable {
-		
-		
-		CreateItemTable connectTable =new CreateItemTable();
+
 		CreateItemTable.itemTable();
 	}
 
 	static void createInvoiceTable() throws Throwable {
-		
-		CreateInvoiceTable createInvoiceTable = new CreateInvoiceTable();
+
 		CreateInvoiceTable.invoiceTable();
 	}
 
 	static void createShopNameTable() {
 
-		CreateShopNameTable createShopNameTable = new CreateShopNameTable();
 		CreateShopNameTable.shopTable();
 	}
 
 	static void insertInItemsTable() {
 
-		InsertInItems insertInItems = new InsertInItems();
 		InsertInItems.insertItems();
 
 	}
-	
+
 	static void insertInInvoiceTable() {
 
-		InsertInInvoice insertInInvoice = new InsertInInvoice();
 		InsertInInvoice.InsertInInvoiceTables();
 
 	}
 
 	static void setShopName() {
 
-		ShopNameClass shopNameClass = new ShopNameClass();
 		ShopNameClass.nameOfTheShop();
 
 	}
 
 	static void applicationMainMenu() {
 
-		MainMenuClass mainMenuClass = new MainMenuClass();
 		MainMenuClass.masterMenu();
-		
-	}	
+
+	}
+
 	static void shopSettingsMenu() {
 
 		Scanner sc = new Scanner(System.in);
-		
+
 		int option2;
 
 		boolean exit2 = true;
 		do {
-			
+
 			SettingsMenuClass.shopSettingMenu();
 
 			option2 = sc.nextInt();
@@ -126,7 +119,7 @@ public class Maine {
 
 		boolean exit3 = true;
 		do {
-			
+
 			ManageShopItemsClass.ShopItemsMenu();
 			option3 = sc.nextInt();
 
@@ -170,7 +163,8 @@ public class Maine {
 			}
 
 		} while (exit3);
-	}   
+	}
+
 	static void createTables() throws Throwable {
 		Scanner sc = new Scanner(System.in);
 		int option4;
@@ -217,37 +211,39 @@ public class Maine {
 		} while (exit4);
 
 	}
-	
+
 	static void addItems() {
-		
+
 		AddItemsInTable.addItemsIntoTable();
 
 	}
+
 	static void deleteItem() throws Throwable {
 
 		DeleteItemClass.deleteItemsFromTable();
 	}
 
 	static void changeItemPrice() throws Throwable {
-		
-		
+
 //		TO BE Complete
 
 		ChangeThePriceClass.priceChange();
 	}
-			
+
 	static void loadData() {
-		 
+
 		insertInItemsTable();
+
 		insertInInvoiceTable();
-		
+
 	}
-	
+
 	static void exitAction() {
 
 		ExitClass.toExit();
 
 	}
+
 	static void defaultAction() {
 
 		System.out.println("please choose correct Number");
@@ -259,8 +255,8 @@ public class Maine {
 		System.out.println("Please Press Enter key to continue...");
 	}
 
-	static void userNameAndPass()throws Throwable {
-		
+	static void userNameAndPass() throws Throwable {
+
 		UserNameClass.userLogin();
 	}
 
@@ -276,7 +272,6 @@ public class Maine {
 		sc.nextLine();
 		connectToDataBase();
 //		userNameAndPass();
-		
 
 		do {
 
@@ -337,4 +332,3 @@ public class Maine {
 	}
 
 }
-

@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class InsertInItems {
-	
+
 	public static void insertItems() {
 
 		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
@@ -64,4 +64,5 @@ public class InsertInItems {
 			System.err.println(ex);
 		}
 
-}}
+	}
+}
