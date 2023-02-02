@@ -84,12 +84,10 @@ public class MainMenuClass {
 			System.out.println(" 0- Exit ");
 
 			option4 = sc.nextInt();
-			
-			String choise = Integer.toString(option4);
-				
+							
 			} catch (InputMismatchException e) {
-				System.out.println("This Choise Contains Characters that are not accepted ");
-				System.out.println("Please Choise Only Numbers ");
+				System.out.println("This Choice Contains Characters that are not accepted ");
+				System.out.println("Please Choose Only Numbers ");
 
 				sc.nextLine();
 				continue;
@@ -170,15 +168,13 @@ public class MainMenuClass {
 			shopSettingMenu(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.getPass());
 
 			option2 = sc.nextInt();
-			String choise = Integer.toString(option2);
-			
-		} catch (InputMismatchException e) {
-			System.out.println("This Choise Contains Characters that are not accepted ");
-			System.out.println("Please Choise Only Numbers ");
+			} catch (InputMismatchException e) {
+				System.out.println("This Choice Contains Characters that are not accepted ");
+				System.out.println("Please Choose Only Numbers ");
 
-			sc.nextLine();
-			continue;
-		}
+				sc.nextLine();
+				continue;
+			}
 
 			switch (option2) {
 

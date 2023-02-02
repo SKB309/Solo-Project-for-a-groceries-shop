@@ -17,11 +17,9 @@ public class ManageItems {
 			try {
 				MainMenuClass.ShopItemsMenu(url, user, pass);
 				option3 = sc.nextInt();
-				String choise = Integer.toString(option3);
-
 			} catch (InputMismatchException e) {
-				System.out.println("This Choise Contains Characters that are not accepted ");
-				System.out.println("Please Choise Only Numbers ");
+				System.out.println("This Choice Contains Characters that are not accepted ");
+				System.out.println("Please Choose Only Numbers ");
 
 				sc.nextLine();
 				continue;
