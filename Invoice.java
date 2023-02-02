@@ -14,6 +14,45 @@ public class Invoice {
 	private Integer paidAmount;
 	private Integer balance;
 	private double total;
+	private Integer tel;
+	private Integer fax;
+	public Integer getTel() {
+		return tel;
+	}
+
+	public void setTel(Integer tel) {
+		this.tel = tel;
+	}
+
+	public Integer getFax() {
+		return fax;
+	}
+
+	public void setFax(Integer fax) {
+		this.fax = fax;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	private String email;
+	private String website;
+	
+	
+	
 	private GroceryItem[] groceryItem;
 	
 	ArrayList<GroceryItem> items;

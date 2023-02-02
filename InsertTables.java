@@ -189,6 +189,107 @@ public class InsertTables {
 	}
 
 	public static void insertInvoiceHeader(String url , String user, String pass) {
+		
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("Enter Customer Name");
+		String Customer_Name = scanner.next();
+
+		System.out.println("Enter Phone Number");
+		Integer Phone_Number = scanner.nextInt();
+
+		System.out.println("Enter Invoice Date");
+		String Invoice_Date = scanner.next();
+
+		System.out.println("Enter Number Of Items");
+		Integer Number_Of_Items = scanner.nextInt();
+
+		System.out.println("Enter Total Amount");
+		Integer Total_Amount = scanner.nextInt();
+
+		System.out.println("Enter Paid Amount");
+		Integer Paid_Amount = scanner.nextInt();
+
+		System.out.println("Enter Balance");
+		Integer Balance = scanner.nextInt();
+
+		System.out.println("Enter Total");
+		Integer Total = scanner.nextInt();
+		
+		
+		System.out.println("Enter TEL Number");
+		Integer tel = scanner.nextInt();
+
+		System.out.println("Enter Fax Number");
+		Integer fax = scanner.nextInt();
+
+		System.out.println("Enter email");
+		String email = scanner.next();
+
+		System.out.println("Enter website");
+		String website = scanner.next();
+
+		String sql = "Insert into Invoice_Header values( '" 
+		        + Customer_Name + "'," 
+				+ Phone_Number + ",'" 
+		        + Invoice_Date + "',"
+				+ Number_Of_Items + "," 
+		        + Total_Amount + "," 
+				+ Paid_Amount + "," 
+		        + Balance + "," 
+		        + tel + "," 
+		        + fax + ",'" 
+				+ email + "','" 
+		        + website + "'," 
+				+ Total + ")";
+
+		// Connection class object
+		Connection con;
+
+		// Try block to check for exceptions
+		try {
+
+			Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
+
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
+
+			// Creating a statement
+			Statement st = con.createStatement();
+
+			// Executing query
+			int m = st.executeUpdate(sql);
+			if (m >= 1)
+				System.out.println("inserted successfully : " + sql);
+			else
+				System.out.println("insertion failed");
+
+			// Closing the connections
+			con.close();
+		}
+
+		// Catch block to handle exceptions
+		catch (Exception ex) {
+			// Display message when exceptions occurs
+			System.err.println(ex);
+		}
+		
+//		
+//		+ "( Id int PRIMARY KEY IDENTITY(1,1)," 
+//				+ " Customer_Name VARCHAR(1000),"
+//				+ " Phone_Number INTEGER ," 
+//				+ " Invoice_Date VARCHAR(1000) ," 
+//				+ " Number_Of_Items INTEGER ,"
+//				+ " Total_Amount INTEGER," 
+//				+ " Paid_Amount INTEGER ," 
+//				+ " Balance INTEGER ," 
+//				+ " tel INTEGER ,"
+//				+ " fax INTEGER," 
+//				+ " email VARCHAR(1000) ," 
+//				+ " website VARCHAR(1000) ," 
+//				+ " Total float,)";
 	}
 
 	public static void reportAllItems(String url , String user, String pass) throws Throwable {
@@ -227,8 +328,83 @@ public class InsertTables {
 				System.err.println(e);
 			}
 		} // End of reportAllItems Function	
+	
+	
+	public static void InsertInNewInvoiceTables(String url, String user, String pass) {
+
 		
-		
+
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("Enter Customer Name");
+		String Customer_Name = scanner.next();
+
+		System.out.println("Enter Phone Number");
+		Integer Phone_Number = scanner.nextInt();
+
+		System.out.println("Enter Invoice Date");
+		String Invoice_Date = scanner.next();
+
+		System.out.println("Enter Number Of Items");
+		Integer Number_Of_Items = scanner.nextInt();
+
+		System.out.println("Enter Total Amount");
+		Integer Total_Amount = scanner.nextInt();
+
+		System.out.println("Enter Paid Amount");
+		Integer Paid_Amount = scanner.nextInt();
+
+		System.out.println("Enter Balance");
+		Integer Balance = scanner.nextInt();
+
+		System.out.println("Enter Total");
+		Integer Total = scanner.nextInt();
+
+		String sql = "Insert into newInvoice values( '" + Customer_Name + "'," + Phone_Number + ",'" + Invoice_Date + "',"
+				+ Number_Of_Items + "," + Total_Amount + "," + Paid_Amount + "," + Balance + "," + Total + ")";
+
+		// Connection class object
+		Connection con;
+
+		// Try block to check for exceptions
+		try {
+
+			Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+			// Registering drivers
+			DriverManager.registerDriver(driver);
+
+			// Reference to connection interface
+			con = DriverManager.getConnection(url, user, pass);
+
+			// Creating a statement
+			Statement st = con.createStatement();
+
+			// Executing query
+			int m = st.executeUpdate(sql);
+			if (m >= 1)
+				System.out.println("inserted successfully : " + sql);
+			else
+				System.out.println("insertion failed");
+
+			// Closing the connections
+			con.close();
+		}
+
+		// Catch block to handle exceptions
+		catch (Exception ex) {
+			// Display message when exceptions occurs
+			System.err.println(ex);
+		}
+		System.out.println("!!!!!!!!!!!!!!Serialized Done Successfully!!!!!!!!!!!!!!");
+		try (FileOutputStream fileOut = new FileOutputStream("CustomerName.ser");
+		         ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+		      out.writeObject(Customer_Name);
+		     
+		    } catch (Exception e) {
+		      e.printStackTrace();
+		    }
+	}
+	
 		
 		
 	

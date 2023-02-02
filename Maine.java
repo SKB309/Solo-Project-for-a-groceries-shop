@@ -16,7 +16,7 @@ public class Maine {
         System.out.println("please Enter the password");
         dbconnection.setPass(sc.next());
 		WelcomeClass.welcomeMassege();
-		MainMenuClass.connectToDataBase();
+//		MainMenuClass.connectToDataBase();
 //		WelcomeClass.checkLogin(username, password);
 
 		do {
@@ -36,8 +36,7 @@ public class Maine {
 				break;
 
 			case 3:
-				InsertTables.InsertInInvoiceTables(dbconnection.getUrl(),dbconnection.getUser(),dbconnection.getPass());
-
+				InsertTables.InsertInNewInvoiceTables(dbconnection.getUrl(),dbconnection.getUser(),dbconnection.getPass());
 				break;
 
 			case 4:
@@ -46,7 +45,7 @@ public class Maine {
 				break;
 
 			case 5:
-
+				
 				break;
 
 			case 6:

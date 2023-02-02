@@ -44,7 +44,7 @@ public class MainMenuClass {
 		System.out.println("* * * * * * *  Hello  * * * * * * * * * *");
 		System.out.println("1-Shop Settings");
 		System.out.println("2-Manage Shop Items");
-		System.out.println("3-Create New Invoice (Invoices should be save/serialized)");
+		System.out.println("3-Create New Invoice ");
 		System.out.println("4-Report: Statistics (No Of Items, No of Invoices, Total Sales)");
 		System.out.println("5-Report: All Invoices ( Invoice No, Invoice Date, Customer Name, No of items, Total, Balance)");
 		System.out.println("6-Search (1) Invoice (Search by Invoice No and Report All Invoice details with items");
@@ -57,7 +57,7 @@ public class MainMenuClass {
 	
 	public static void shopSettingMenu(String url ,String user, String pass) {
 		System.out.println("1- Load Data (Items and invoices)");
-		System.out.println("2- Set Shop Name (data should be saved)");
+		System.out.println("2- Set Shop Name ");
 		System.out.println("3- Set Invoice Header (Tel / Fax / Email / Website)");
 		System.out.println("4- Go Back");
 		System.out.println("0- Exit ");
@@ -75,6 +75,8 @@ public class MainMenuClass {
 			System.out.println(" 1- Create Items Table  ");
 			System.out.println(" 2- Create Invoice Table ");
 			System.out.println(" 3- Create Shop Name Table ");
+			System.out.println(" 4- Create Invoice Header Table");
+			System.out.println(" 5- Create New Invoice Tables ");
 			System.out.println(" 0- Exit ");
 
 			option4 = sc.nextInt();
@@ -97,6 +99,18 @@ public class MainMenuClass {
 
 				CreateingTables.shopTable(url, user,pass);
 
+				break;
+				
+			case 4 :
+				
+				CreateingTables.InvoiceHeader(url, user,pass);
+				
+				break;
+				
+			case 5 :
+				
+				CreateingTables.newInvoiceTable2(url, user, pass);
+				
 				break;
 
 			case 0:
@@ -156,8 +170,7 @@ public class MainMenuClass {
 
 			case 3:
 
-				System.out.println("Set Invoice Header :");
-				option2 = sc.nextInt();
+				InsertTables.insertInvoiceHeader(url, user, pass);
 
 				break;
 
@@ -204,6 +217,7 @@ public class MainMenuClass {
 
 	}
 
+   
     public static void defaultAction() {
 
 		System.out.println("please choose correct Number");

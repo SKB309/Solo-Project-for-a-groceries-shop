@@ -64,5 +64,63 @@ public class CreateingTables {
 		}
 	}
 
+
+	public static void InvoiceHeader(String url,String user,String pass) {
+		
+		Connection conn;
+		
+
+		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
+				Statement stmt = conn1.createStatement();) {
+			String sql = "CREATE TABLE Invoice_Header " 
+				+ "( Id int PRIMARY KEY IDENTITY(1,1)," 
+					+ " Customer_Name VARCHAR(1000),"
+					+ " Phone_Number INTEGER ," 
+					+ " Invoice_Date VARCHAR(1000) ," 
+					+ " Number_Of_Items INTEGER ,"
+					+ " Total_Amount INTEGER," 
+					+ " Paid_Amount INTEGER ," 
+					+ " Balance INTEGER ," 
+					+ " tel INTEGER ,"
+					+ " fax INTEGER," 
+					+ " email VARCHAR(1000) ," 
+					+ " website VARCHAR(1000) ," 
+					+ " Total float,)";
+			
+			stmt.executeUpdate(sql);
+			System.out.println("Created table in given database...");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+	
+	public static void newInvoiceTable2(String url, String user, String pass) {
+		Connection conn;
+	
+
+		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
+				Statement stmt = conn1.createStatement();) {
+			String sql = "CREATE TABLE newInvoice  " + "( Id int PRIMARY KEY IDENTITY(1,1)," + " Customer_Name VARCHAR(1000),"
+					+ " Phone_Number INTEGER ," + " Invoice_Date VARCHAR(1000) ," + " Number_Of_Items INTEGER ,"
+					+ " Total_Amount INTEGER," + " Paid_Amount INTEGER ," + " Balance INTEGER ," + " Total float,)";
+
+			stmt.executeUpdate(sql);
+			System.out.println("Created table in given database...");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+
 }
 
