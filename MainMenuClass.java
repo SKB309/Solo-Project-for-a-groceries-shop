@@ -39,7 +39,7 @@ public class MainMenuClass {
 	}
 
 	
-	public static void masterMenu() {
+	public static void masterMenu(String url ,String user, String pass) {
 
 		System.out.println("* * * * * * *  Hello  * * * * * * * * * *");
 		System.out.println("1-Shop Settings");
@@ -55,7 +55,7 @@ public class MainMenuClass {
 	}
 	
 	
-	public static void shopSettingMenu() {
+	public static void shopSettingMenu(String url ,String user, String pass) {
 		System.out.println("1- Load Data (Items and invoices)");
 		System.out.println("2- Set Shop Name (data should be saved)");
 		System.out.println("3- Set Invoice Header (Tel / Fax / Email / Website)");
@@ -114,7 +114,7 @@ public class MainMenuClass {
 	}
 	
 	
-	public static void ShopItemsMenu() {
+	public static void ShopItemsMenu(String url ,String user, String pass) {
 		System.out.println("1- Add Items (Item should be saved/serialized");
 		System.out.println("2- Delete Item");
 		System.out.println("3- Change Item Price");
@@ -135,7 +135,7 @@ public class MainMenuClass {
 		
 		do {
 
-			shopSettingMenu();
+			shopSettingMenu(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.getPass());
 
 			option2 = sc.nextInt();
 
@@ -143,15 +143,15 @@ public class MainMenuClass {
 
 			case 1:
 
-				InsertTables.insertItems(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
+				InsertTables.insertItems(url,user, pass);
 
-				InsertTables.InsertInInvoiceTables(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
+				InsertTables.InsertInInvoiceTables(url,user, pass);
 
 				break;
 
 			case 2:
 
-				InsertTables.nameOfTheShop(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
+				InsertTables.nameOfTheShop(url,user, pass);
 				break;
 
 			case 3:
@@ -209,23 +209,7 @@ public class MainMenuClass {
 		System.out.println("please choose correct Number");
 	}
 
-    public static void dkjfjsdkj(String url, String user, String pass) {
-    	
-		Scanner sc = new Scanner(System.in);
-
-    	
-		DataBaseConnection dbconnection=new DataBaseConnection();
-
-    	System.out.println("please Enter the database url");
-        dbconnection.setUrl(sc.next());
-        System.out.println("please Enter the username");
-        dbconnection.setUser(sc.next());
-        System.out.println("please Enter the password");
-        dbconnection.setPass(sc.next());
-    	
-    	
-    	
-    }
+    
     }
 
 

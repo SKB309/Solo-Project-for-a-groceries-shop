@@ -5,6 +5,7 @@ import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
@@ -188,6 +189,48 @@ public class InsertTables {
 	}
 
 	public static void insertInvoiceHeader(String url , String user, String pass) {
-
 	}
+
+	public static void reportAllItems(String url , String user, String pass) throws Throwable {
+
+			
+			String sql = "SELECT * FROM GroceryItems";
+			Connection con = null;
+			try {
+				Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+
+				DriverManager.registerDriver(driver);
+
+				con = DriverManager.getConnection(url, user, pass);
+				Statement st = con.createStatement();
+				ResultSet result = st.executeQuery(sql);
+
+				while (result.next()) {
+
+					Integer id = result.getInt("Id");
+					String itemName = result.getString("Item_Name");
+					Float unitPrice = result.getFloat("Unit_Price");
+					Float qtyAmount = result.getFloat("Qty_Amount");
+					Integer quantity = result.getInt("Quantity");
+//					Integer Shop_id = result.getInt("Shop_id");
+					
+					
+
+					System.out.println("Id :" + id + "||" + " " + "Item Name is:" + itemName + "||" + " "
+							+ "Item Unit Price :" + unitPrice + "||" + " " + "Item Quantity Price :"
+							+ qtyAmount + "||" + " " + "Item Quantity :" + quantity + "||" + " "
+//							+ "From Shop Id "
+							);
+				}
+				con.close();
+			} catch (Exception e) {
+				System.err.println(e);
+			}
+		} // End of reportAllItems Function	
+		
+		
+		
+		
+	
 }
+

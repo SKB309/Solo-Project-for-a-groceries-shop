@@ -14,7 +14,7 @@ public class ManageItems {
 		boolean exit3 = true;
 		do {
 
-			MainMenuClass.ShopItemsMenu();
+			MainMenuClass.ShopItemsMenu(url,user, pass);
 			option3 = sc.nextInt();
 
 			switch (option3) {
@@ -39,8 +39,7 @@ public class ManageItems {
 
 			case 4:
 
-				System.out.println(" Report All Items :");
-				option3 = sc.nextInt();
+				InsertTables.reportAllItems(url, user, pass);
 
 				break;
 

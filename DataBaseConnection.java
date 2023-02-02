@@ -4,6 +4,8 @@ public class DataBaseConnection {
 	
 	String url;
 	String user; 
+	
+	
 	public String getUrl() {
 		return url;
 	}
