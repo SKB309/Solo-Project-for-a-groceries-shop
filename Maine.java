@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Maine {
 
+	
+	
 	public static void main(String[] args) throws Throwable {
 
 		Scanner sc = new Scanner(System.in);
@@ -11,15 +13,15 @@ public class Maine {
 		int option1;
 
 		WelcomeClass.welcomeMassege();
-		Connections.connectToDataBase();
-//		UserNameClass.userLogin();
+		MainMenuClass.connectToDataBase();
+//		MainMenuClass.userLogin();
 		do {
 			MainMenuClass.masterMenu();
 			option1 = sc.nextInt();
 			switch (option1) {
 
 			case 1:
-				ShopMenu.shopSettingsMenu();
+				MainMenuClass.shopSettingsMenu();
 				break;
 
 			case 2:
@@ -27,12 +29,12 @@ public class Maine {
 				break;
 
 			case 3:
-				InsertInInvoice.InsertInInvoiceTables();
+				InsertTables.InsertInInvoiceTables();
 
 				break;
 
 			case 4:
-				SearchInvois.invoiceSearch();
+				EditingData.invoiceSearch();
 
 				break;
 
@@ -49,16 +51,16 @@ public class Maine {
 				break;
 
 			case 8:
-				CreateingTables.createTables();
+				MainMenuClass.createTables();
 				break;
 
 			case 0:
-				ExitClass.toExit();
+				MainMenuClass.toExit();
 				exit1 = false;
 				break;
 
 			default:
-				DefaultClass.defaultAction();
+				MainMenuClass.defaultAction();
 			}
 		} while (exit1);
 	}

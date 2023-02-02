@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Shop {
 
-	String name;
+	String ShopName;
 
 	private static ObjectOutputStream out;
 	ObjectInputStream in = null;

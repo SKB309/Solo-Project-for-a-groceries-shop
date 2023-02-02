@@ -14,26 +14,26 @@ public class ManageItems {
 		boolean exit3 = true;
 		do {
 
-			ManageShopItemsClass.ShopItemsMenu();
+			MainMenuClass.ShopItemsMenu();
 			option3 = sc.nextInt();
 
 			switch (option3) {
 
 			case 1:
 
-				AddItemsInTable.addItemsIntoTable();
+				EditingData.addItemsIntoTable();
 
 				break;
 
 			case 2:
 
-				DeleteItemClass.deleteItemsFromTable();
+				EditingData.deleteItemsFromTable();
 
 				break;
 
 			case 3:
 
-				ChangeThePriceClass.priceChange();
+				EditingData.priceChange();
 
 				break;
 
