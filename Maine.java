@@ -1,5 +1,6 @@
 package agroceriesShop;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Maine {
@@ -18,13 +19,27 @@ public class Maine {
 		WelcomeClass.welcomeMassege();
 //		MainMenuClass.connectToDataBase();
 //		WelcomeClass.checkLogin(username, password);
-
+		int option1;
 		do {
 
-			int option1;
-
+			try {
+				
+				
+				
 			MainMenuClass.masterMenu(dbconnection.getUrl(),dbconnection.getUser(),dbconnection.getPass());
-			option1 = sc.nextInt();
+			
+			    option1 = sc.nextInt();
+				String choise = Integer.toString(option1);
+				
+			} catch (InputMismatchException e) {
+				System.out.println("This Choise Contains Characters that are not accepted ");
+				System.out.println("Please Choise Only Numbers ");
+
+				sc.nextLine();
+				continue;
+			}
+			 
+			
 			switch (option1) {
 
 			case 1:

@@ -1,9 +1,10 @@
 package agroceriesShop;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ManageItems {
-	
+
 	public static void manageShopItems(String url, String user, String pass) throws Throwable {
 
 		Scanner sc = new Scanner(System.in);
@@ -13,27 +14,36 @@ public class ManageItems {
 
 		boolean exit3 = true;
 		do {
+			try {
+				MainMenuClass.ShopItemsMenu(url, user, pass);
+				option3 = sc.nextInt();
+				String choise = Integer.toString(option3);
 
-			MainMenuClass.ShopItemsMenu(url,user, pass);
-			option3 = sc.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("This Choise Contains Characters that are not accepted ");
+				System.out.println("Please Choise Only Numbers ");
+
+				sc.nextLine();
+				continue;
+			}
 
 			switch (option3) {
 
 			case 1:
 
-				EditingData.addItemsIntoTable(url,user, pass);
+				EditingData.addItemsIntoTable(url, user, pass);
 
 				break;
 
 			case 2:
 
-				EditingData.deleteItemsFromTable(url,user, pass);
+				EditingData.deleteItemsFromTable(url, user, pass);
 
 				break;
 
 			case 3:
 
-				EditingData.priceChange(url,user, pass);
+				EditingData.priceChange(url, user, pass);
 
 				break;
 

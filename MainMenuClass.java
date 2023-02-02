@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainMenuClass {
@@ -51,6 +52,8 @@ public class MainMenuClass {
 		System.out.println("7-Program Statistics (Print each Main Menu Item with how many number selected)");
 		System.out.println("8-Create Tables");
 		System.out.println("0-Exit ");
+		
+		
 
 	}
 	
@@ -71,7 +74,8 @@ public class MainMenuClass {
 		int option4;
 		boolean exit4 = true;
 		do {
-
+			
+			try {
 			System.out.println(" 1- Create Items Table  ");
 			System.out.println(" 2- Create Invoice Table ");
 			System.out.println(" 3- Create Shop Name Table ");
@@ -80,6 +84,16 @@ public class MainMenuClass {
 			System.out.println(" 0- Exit ");
 
 			option4 = sc.nextInt();
+			
+			String choise = Integer.toString(option4);
+				
+			} catch (InputMismatchException e) {
+				System.out.println("This Choise Contains Characters that are not accepted ");
+				System.out.println("Please Choise Only Numbers ");
+
+				sc.nextLine();
+				continue;
+			}
 
 			switch (option4) {
 
@@ -144,14 +158,27 @@ public class MainMenuClass {
 		int option2;
 
 		boolean exit2 = true;
+		
 		DataBaseConnection dbconnection = new DataBaseConnection();
 
 		
 		do {
-
+			
+			
+			try {
+				
 			shopSettingMenu(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.getPass());
 
 			option2 = sc.nextInt();
+			String choise = Integer.toString(option2);
+			
+		} catch (InputMismatchException e) {
+			System.out.println("This Choise Contains Characters that are not accepted ");
+			System.out.println("Please Choise Only Numbers ");
+
+			sc.nextLine();
+			continue;
+		}
 
 			switch (option2) {
 
