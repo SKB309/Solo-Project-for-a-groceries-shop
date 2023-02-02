@@ -14,41 +14,31 @@ public class WelcomeClass {
 	}
 	
 
-	public static void userLogin() {
 
-		boolean isUser = true;
+	
+	public static boolean checkLogin(String username, String password) {
+	    Scanner sc = new Scanner(System.in);
+	    boolean isValid = false;
 
-		Scanner sc = new Scanner(System.in);
-		Stack<String> historyStack = new Stack<>();
+	    while (!isValid) {
+	      System.out.print("Enter username: ");
+	      String userInput = sc.nextLine();
+	      System.out.print("Enter password: ");
+	      String passInput = sc.nextLine();
 
-		while (isUser) {
-			System.out.println("Entere user name");
-			String userName = sc.next();
-			historyStack.push(userName);
+	      if (userInput.equals("SAID") && passInput.equals("said")) {
+	        System.out.println("Login successful!");
+	        isValid = true;
+	      } else {
+	        System.out.println("Invalid username or password. Try again.");
+	      }
+	    }
+	    sc.close();
+	    return isValid;
+	  }
 
-			try {
-				if (!userName.equals("SAID")) {
-					throw new Exception("user name is wrong");
-				}
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-				continue;
-			}
-
-			System.out.println("Entere user Password");
-			String userPass = sc.next();
-			historyStack.push(userPass);
-
-			try {
-				if (!userPass.equals("said")) {
-					throw new Exception("user Password is wrong");
-				}
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-				continue;
-			}
-		}
-		isUser = false;
-
-	}
-}
+	
+	public static void main(String[] args) throws Throwable {
+		
+		
+}}

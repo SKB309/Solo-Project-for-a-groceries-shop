@@ -9,15 +9,8 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class EditingData {
-	
 
-	public static void addItemsIntoTable() {
-
-		
-		
-		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-		String user = "sa";
-		String pass = "root";
+	public static void addItemsIntoTable(String url, String user, String pass) {
 
 		Scanner sc = new Scanner(System.in);
 
@@ -37,7 +30,6 @@ public class EditingData {
 			String sql = "Insert into GroceryItems values( '" + Item_Name + "'," + Quantity + "," + Unit_Price + ","
 					+ Quantity * Unit_Price + ")";
 
-			 
 			// Connection class object
 			Connection con;
 
@@ -72,24 +64,19 @@ public class EditingData {
 			}
 			System.out.println("!!!!!!!!!!!!!!Serialized Done Successfully!!!!!!!!!!!!!!");
 			try (FileOutputStream fileOut = new FileOutputStream("item.ser");
-			         ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-			      out.writeObject(Item_Name);
-			     
-			    } catch (Exception e) {
-			      e.printStackTrace();
-			    }
-			 
+					ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+				out.writeObject(Item_Name);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		}
 
 	}
 
-	
-	public static void priceChange() throws Throwable {
+	public static void priceChange(String url, String user, String pass) throws Throwable {
 
-		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-		String user = "sa";
-		String pass = "root";
 		Connection con;
 
 		// Reference to connection interface
@@ -104,10 +91,10 @@ public class EditingData {
 		System.out.println(" Please Enter  Unit Price To Update ");
 		float userInput2 = inputScanner.nextFloat();
 
-		String sqlQueryToUpdate = "UPDATE GroceryItems SET Unit_Price ="+userInput2+" WHERE Item_Name = '"+userInput+"'";
+		String sqlQueryToUpdate = "UPDATE GroceryItems SET Unit_Price =" + userInput2 + " WHERE Item_Name = '"
+				+ userInput + "'";
 		System.out.println(sqlQueryToUpdate);
-		
-		
+
 		try {
 			Statement statement = con.createStatement();
 			int m = statement.executeUpdate(sqlQueryToUpdate);
@@ -116,8 +103,6 @@ public class EditingData {
 			System.err.println(ex);
 		}
 
-		
-		
 //		try (Connection connection = DriverManager.getConnection(url, user, pass);
 //			     PreparedStatement preparedStatement = connection.prepareStatement(sqlQueryToUpdate)) {
 //			    
@@ -132,12 +117,8 @@ public class EditingData {
 //			}
 	}
 
+	public static void deleteItemsFromTable(String url, String user, String pass) throws Throwable {
 
-	public static void deleteItemsFromTable() throws Throwable {
-
-		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-		String user = "sa";
-		String pass = "root";
 		Connection con;
 
 		// Reference to connection interface
@@ -163,8 +144,7 @@ public class EditingData {
 
 	}
 
-	
-	  public static void invoiceSearch() {
+	public static void invoiceSearch(String url, String user, String pass) {
 //		Scanner sc = new Scanner(System.in);
 //		System.out.print("Enter invoice number: ");
 //		String invoiceNumber = sc.nextLine();
@@ -196,7 +176,5 @@ public class EditingData {
 //			System.out.println("Invoice not found.");
 //		}
 	}
-
-
 
 }

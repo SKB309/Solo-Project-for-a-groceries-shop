@@ -8,11 +8,9 @@ import java.util.Scanner;
 
 public class CreateingTables {
 	
-	public static void invoiceTable() {
+	public static void invoiceTable(String url, String user, String pass) {
 		Connection conn;
-		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-		String user = "sa";
-		String pass = "root";
+	
 
 		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
 				Statement stmt = conn1.createStatement();) {
@@ -29,12 +27,10 @@ public class CreateingTables {
 	}
 
 	
-	public static void itemTable() {
+	public static void itemTable(String url ,String user, String pass) {
 
 		Connection conn;
-		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-		String user = "sa";
-		String pass = "root";
+
 
 		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
 				Statement stmt = conn1.createStatement();) {
@@ -51,12 +47,10 @@ public class CreateingTables {
 	}
 
 	
-	public static void shopTable() {
+	public static void shopTable(String url,String user,String pass) {
 
 		Connection conn;
-		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-		String user = "sa";
-		String pass = "root";
+	
 
 		try (Connection conn1 = DriverManager.getConnection(url, user, pass);
 				Statement stmt = conn1.createStatement();) {

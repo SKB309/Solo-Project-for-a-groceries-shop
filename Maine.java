@@ -4,37 +4,41 @@ import java.util.Scanner;
 
 public class Maine {
 
-	
-	
 	public static void main(String[] args) throws Throwable {
 
 		Scanner sc = new Scanner(System.in);
 		boolean exit1 = true;
-		int option1;
+		DataBaseConnection dbconnection = new DataBaseConnection();
+
+		MainMenuClass.dkjfjsdkj(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
 
 		WelcomeClass.welcomeMassege();
 		MainMenuClass.connectToDataBase();
-//		MainMenuClass.userLogin();
+//		WelcomeClass.checkLogin(username, password);
+
 		do {
+
+			int option1;
+
 			MainMenuClass.masterMenu();
 			option1 = sc.nextInt();
 			switch (option1) {
 
 			case 1:
-				MainMenuClass.shopSettingsMenu();
+				MainMenuClass.shopSettingsMenu(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
 				break;
 
 			case 2:
-				ManageItems.manageShopItems();
+				ManageItems.manageShopItems(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
 				break;
 
 			case 3:
-				InsertTables.InsertInInvoiceTables();
+				InsertTables.InsertInInvoiceTables(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
 
 				break;
 
 			case 4:
-				EditingData.invoiceSearch();
+				EditingData.invoiceSearch(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
 
 				break;
 
@@ -51,7 +55,7 @@ public class Maine {
 				break;
 
 			case 8:
-				MainMenuClass.createTables();
+				MainMenuClass.createTables(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
 				break;
 
 			case 0:
@@ -62,6 +66,7 @@ public class Maine {
 			default:
 				MainMenuClass.defaultAction();
 			}
+
 		} while (exit1);
 	}
 }

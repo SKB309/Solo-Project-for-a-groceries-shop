@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ManageItems {
 	
-	public static void manageShopItems() throws Throwable {
+	public static void manageShopItems(String url, String user, String pass) throws Throwable {
 
 		Scanner sc = new Scanner(System.in);
 
@@ -21,19 +21,19 @@ public class ManageItems {
 
 			case 1:
 
-				EditingData.addItemsIntoTable();
+				EditingData.addItemsIntoTable(url,user, pass);
 
 				break;
 
 			case 2:
 
-				EditingData.deleteItemsFromTable();
+				EditingData.deleteItemsFromTable(url,user, pass);
 
 				break;
 
 			case 3:
 
-				EditingData.priceChange();
+				EditingData.priceChange(url,user, pass);
 
 				break;
 

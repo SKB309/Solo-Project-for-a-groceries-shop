@@ -10,11 +10,9 @@ import java.util.Scanner;
 
 public class InsertTables {
 
-	public static void InsertInInvoiceTables() {
+	public static void InsertInInvoiceTables(String url, String user, String pass) {
 
-		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-		String user = "sa";
-		String pass = "root";
+	
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -88,11 +86,8 @@ public class InsertTables {
 	}
 
 
-	public static void insertItems() {
+	public static void insertItems(String url, String user, String pass) {
 
-		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-		String user = "sa";
-		String pass = "root";
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -147,11 +142,8 @@ public class InsertTables {
 	}
 
 	
-	public static void nameOfTheShop() {
+	public static void nameOfTheShop(String url , String user, String pass) {
 
-		String url = "jdbc:sqlserver://localhost:1433;databaseName=SoloProjectBatch1;encrypt=true;trustServerCertificate=true";
-		String user = "sa";
-		String pass = "root";
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -195,7 +187,7 @@ public class InsertTables {
 
 	}
 
-	public static void insertInvoiceHeader() {
+	public static void insertInvoiceHeader(String url , String user, String pass) {
 
 	}
 }

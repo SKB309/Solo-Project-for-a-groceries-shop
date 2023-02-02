@@ -51,6 +51,7 @@ public class MainMenuClass {
 		System.out.println("7-Program Statistics (Print each Main Menu Item with how many number selected)");
 		System.out.println("8-Create Tables");
 		System.out.println("0-Exit ");
+
 	}
 	
 	
@@ -64,7 +65,7 @@ public class MainMenuClass {
 	}
 	
 	
-	public static void createTables() throws Throwable {
+	public static void createTables(String url ,String user, String pass) throws Throwable {
 
 		Scanner sc = new Scanner(System.in);
 		int option4;
@@ -82,19 +83,19 @@ public class MainMenuClass {
 
 			case 1:
 
-				CreateingTables.itemTable();
+				CreateingTables.itemTable(url, user,pass);
 
 				break;
 
 			case 2:
 
-				CreateingTables.invoiceTable();
+				CreateingTables.invoiceTable(url, user,pass);
 
 				break;
 
 			case 3:
 
-				CreateingTables.shopTable();
+				CreateingTables.shopTable(url, user,pass);
 
 				break;
 
@@ -122,13 +123,16 @@ public class MainMenuClass {
 	}
 	
 	
-    public static void shopSettingsMenu() {
+    public static void shopSettingsMenu(String url, String user, String pass) {
 
 		Scanner sc = new Scanner(System.in);
 
 		int option2;
 
 		boolean exit2 = true;
+		DataBaseConnection dbconnection = new DataBaseConnection();
+
+		
 		do {
 
 			shopSettingMenu();
@@ -139,15 +143,15 @@ public class MainMenuClass {
 
 			case 1:
 
-				InsertTables.insertItems();
+				InsertTables.insertItems(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
 
-				InsertTables.InsertInInvoiceTables();
+				InsertTables.InsertInInvoiceTables(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
 
 				break;
 
 			case 2:
 
-				InsertTables.nameOfTheShop();
+				InsertTables.nameOfTheShop(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.pass);
 				break;
 
 			case 3:
@@ -204,4 +208,25 @@ public class MainMenuClass {
 
 		System.out.println("please choose correct Number");
 	}
-}
+
+    public static void dkjfjsdkj(String url, String user, String pass) {
+    	
+		Scanner sc = new Scanner(System.in);
+
+    	
+		DataBaseConnection dbconnection=new DataBaseConnection();
+
+    	System.out.println("please Enter the database url");
+        dbconnection.setUrl(sc.next());
+        System.out.println("please Enter the username");
+        dbconnection.setUser(sc.next());
+        System.out.println("please Enter the password");
+        dbconnection.setPass(sc.next());
+    	
+    	
+    	
+    }
+    }
+
+
+
