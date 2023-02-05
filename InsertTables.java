@@ -275,21 +275,7 @@ public class InsertTables {
 			// Display message when exceptions occurs
 			System.err.println(ex);
 		}
-		
-//		
-//		+ "( Id int PRIMARY KEY IDENTITY(1,1)," 
-//				+ " Customer_Name VARCHAR(1000),"
-//				+ " Phone_Number INTEGER ," 
-//				+ " Invoice_Date VARCHAR(1000) ," 
-//				+ " Number_Of_Items INTEGER ,"
-//				+ " Total_Amount INTEGER," 
-//				+ " Paid_Amount INTEGER ," 
-//				+ " Balance INTEGER ," 
-//				+ " tel INTEGER ,"
-//				+ " fax INTEGER," 
-//				+ " email VARCHAR(1000) ," 
-//				+ " website VARCHAR(1000) ," 
-//				+ " Total float,)";
+
 	}
 
 	public static void reportAllItems(String url , String user, String pass) throws Throwable {
@@ -328,6 +314,55 @@ public class InsertTables {
 				System.err.println(e);
 			}
 		} // End of reportAllItems Function	
+	
+
+	
+	public static void reportAllInvoice(String url , String user, String pass) throws Throwable {
+
+		
+		String sql = "SELECT * FROM Invoice";
+		Connection con = null;
+		try {
+			Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+
+			DriverManager.registerDriver(driver);
+
+			con = DriverManager.getConnection(url, user, pass);
+			Statement st = con.createStatement();
+			ResultSet result = st.executeQuery(sql);
+
+			while (result.next()) {
+				
+
+				Integer id = result.getInt("Id");
+				String Customer_Name = result.getString("Customer_Name");
+				Integer Phone_Number = result.getInt("Phone_Number");
+				String Invoice_Date = result.getString("Invoice_Date");
+				Integer Number_Of_Items = result.getInt("Number_Of_Items");
+				Integer Total_Amount = result.getInt("Total_Amount");
+				Integer Paid_Amount = result.getInt("Paid_Amount");
+				Integer Balance = result.getInt("Balance");
+				float Total = result.getFloat("Total");
+				
+				
+
+				System.out.println("Id is :" + id + "||" + " " 
+				        + "Customer Name is :" + Customer_Name + "||" + " "
+						+ "Phone Number is :" + Phone_Number + "||" + " " 
+				        + "Invoice Date is:"+ Invoice_Date + "||" + " " 
+						+ "Number Of Items is :" + Number_Of_Items + "||" + " "
+						+ "Total_Amount is :" + Total_Amount + "||" + " "
+						+ "Paid Amount is :"+ Paid_Amount + "||" + " " 
+						+ "Balance is :" + Balance + "||" + " "
+						+ "Total is :" + Total + "||" + " "
+						
+						);
+			}
+			con.close();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+	} // End of reportAllItems Function	
 	
 	
 	public static void InsertInNewInvoiceTables(String url, String user, String pass) {

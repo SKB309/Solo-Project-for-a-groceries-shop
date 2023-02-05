@@ -52,7 +52,7 @@ public class Maine {
 				break;
 
 			case 4:
-				EditingData.invoiceSearch(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.getPass());
+				EditingData.invoiceSearch2(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.getPass());
 
 				break;
 

@@ -4,6 +4,8 @@ public class DataBaseConnection {
 	
 	String url;
 	String user; 
+	String pass;
+
 	
 	
 	public String getUrl() {
@@ -24,7 +26,6 @@ public class DataBaseConnection {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	String pass;
 
 
 }

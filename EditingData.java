@@ -5,6 +5,7 @@ import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
@@ -103,18 +104,6 @@ public class EditingData {
 			System.err.println(ex);
 		}
 
-//		try (Connection connection = DriverManager.getConnection(url, user, pass);
-//			     PreparedStatement preparedStatement = connection.prepareStatement(sqlQueryToUpdate)) {
-//			    
-//			    preparedStatement.setDouble(1, Unit_Price);
-//			    preparedStatement.setString(2, Item_Name);
-//			    
-//			    int rowsAffected = preparedStatement.executeUpdate();
-//			    
-//			    System.out.println(rowsAffected + " row(s) updated");
-//			} catch (SQLException e) {
-//			    System.err.println("Update failed: " + e.getMessage());
-//			}
 	}
 
 	public static void deleteItemsFromTable(String url, String user, String pass) throws Throwable {
@@ -143,8 +132,43 @@ public class EditingData {
 		}
 
 	}
+	
+	public static void invoiceSearch2(String url, String user, String pass) {
 
+		
+//		 Total Sales)
+	String sql = "SELECT Id,Number_Of_Items,Total_Amount FROM Invoice";
+	Connection con = null;
+	try {
+		Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+
+		DriverManager.registerDriver(driver);
+
+		con = DriverManager.getConnection(url, user, pass);
+		Statement st = con.createStatement();
+		ResultSet result = st.executeQuery(sql);
+
+		while (result.next()) {
+
+			Integer id = result.getInt("Id");
+			Integer Number_Of_Items = (int) result.getFloat("Number_Of_Items");
+			Integer Total_Amount = (int) result.getFloat("Total_Amount");
+			
+			
+			
+
+			System.out.println("Id :" + id + "||" + " " + " Number Of Items is:" + Number_Of_Items + "||" + " "
+					+ "Item Total Amount :" + Total_Amount + "||" + " ");
+		}
+		con.close();
+	} catch (Exception e) {
+		System.err.println(e);
+	}
+} 
+	
 	public static void invoiceSearch(String url, String user, String pass) {
+//		
+//		
 //		Scanner sc = new Scanner(System.in);
 //		System.out.print("Enter invoice number: ");
 //		String invoiceNumber = sc.nextLine();
