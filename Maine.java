@@ -57,7 +57,7 @@ public class Maine {
 				break;
 
 			case 5:
-
+				InsertTables.reportAllInvoice(dbconnection.getUrl(), dbconnection.getUser(), dbconnection.getPass());
 				break;
 
 			case 6:
